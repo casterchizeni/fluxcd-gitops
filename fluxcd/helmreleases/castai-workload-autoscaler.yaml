@@ -14,5 +14,9 @@ spec:
         namespace: flux-system
   values:
     castai:
-      apiKeySecretRef: castai-agent
-      configMapRef: castai-agent-metadata
+      apiKey: ""    # optional dummy value to pass Helm render checks
+    envFrom:
+      - secretRef:
+          name: castai-agent
+      - configMapRef:
+          name: castai-agent-metadata

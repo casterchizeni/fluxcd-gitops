@@ -13,6 +13,9 @@ spec:
         name: castai-helm
         namespace: flux-system
   values:
-    castai:
-      apiKeySecretRef: castai-agent
-      clusterIDSecretRef: castai-agent-metadata
+    envFrom:
+      - secretRef:
+          name: castai-agent
+      - configMapRef:
+          name: castai-agent-metadata
+
