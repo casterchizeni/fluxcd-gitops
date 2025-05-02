@@ -13,7 +13,7 @@ spec:
         name: castai-helm
         namespace: flux-system
   values:
-    replicaCount: 1
+    replicaCount: 2
     envFrom:
       - secretRef:
           name: castai-agent
