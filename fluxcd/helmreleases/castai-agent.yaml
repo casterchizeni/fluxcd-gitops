@@ -13,11 +13,14 @@ spec:
         name: castai-helm
         namespace: flux-system
   values:
+    autoscaling:
+      enabled: true
+    createNamespace: false
     provider: gke
     metadataStore:
       enabled: true
     envFrom:
       - secretRef:
           name: castai-agent
-      - configMapRef:
-          name: castai-agent-metadata
+
+      
