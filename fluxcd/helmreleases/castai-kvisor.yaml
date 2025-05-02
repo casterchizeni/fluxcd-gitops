@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: castai-kvisor
+  namespace: castai-agent
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: castai-kvisor
+      sourceRef:
+        kind: HelmRepository
+        name: castai-helm
+        namespace: flux-system
+  values:
+    castai:
+      apiKeySecretRef: castai-agent
+      clusterIDSecretRef: castai-agent-metadata
+    controller:
+      extraArgs:
+        kube-linter-enabled: true
+        image-scan-enabled: true
+        kube-bench-enabled: true
+        kube-bench-cloud-provider: gke
